@@ -1,0 +1,31 @@
+<% @page_title = "All Sections" %>
+
+<div class="sections index">
+  <h2>Sections Index</h2>
+  <%= link_to  "Add New section", new_section_path, :class => 'action new' %>
+
+  <table class="listing", summary="section list">
+    <tr class="header">
+      <th>#</th>
+      <th>Section</th>
+      <th>Page ID</th>
+      <th>Position</th>
+      <th>Visible</th>
+      <th>Actions</th>
+    </tr>
+    <% @sections.each do |section| %>
+    <tr>
+      <td><%= section.position %></td>
+      <td><%= section.name %></td>
+      <td><%= section.page_id%></td>
+      <td><%= section.position %></td>
+      <td class="center"><%= status_tag section.visible %></td>
+      <td class="actions">
+        <%= link_to "show", section_path(section), :class => 'action show' %>
+        <%= link_to  "edit", edit_section_path(section), :class => 'action edit' %>
+        <%= link_to  "delete", delete_section_path(section), :class => 'action delete' %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,0 +1,9 @@
+<h1>Hello World from Hello view</h1>
+
+<% @array.each do |elem| %>
+<%= elem %> <br>
+<% end %>
+
+<%= link_to "Index page", :action => 'index' %><br>
+<%= link_to "Index page with params", :action => 'index', :page => 5, :id => 20 %><br>
+<%= link_to "Index page with array", :action => 'index', :array => @array %>

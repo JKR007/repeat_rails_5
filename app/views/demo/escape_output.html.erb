@@ -1,0 +1,11 @@
+<!-- Sanitizers -->
+<% evil_string = "<script>alert('Gotcha')</script>" %>
+<% good_string = "<strong>Welcome  to my Site! </strong>" %>
+
+<!-- 'raw' is used to execute the script -->
+<%= raw evil_string %><br>
+<%= raw good_string %><br>
+
+<hr>
+<%= evil_string.html_safe %><br>
+<%= good_string.html_safe %><br>

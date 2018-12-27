@@ -1,0 +1,12 @@
+<h1>Hello World from index view</h1>
+
+<a href="/demo/hello">Hello Page 1</a><br>
+<%= link_to  "Hello Page 2", :action => 'hello' %><br>
+ID: <%= @id %> <br>
+Page: <%= @page %><br>
+Page: <%= params[:page]%>
+
+<div class="section">
+  
+</div>
+<%= link_to  "Roar", "#", :onclick => "jsRoar('JavaScript'); return true;" %>

@@ -1,0 +1,33 @@
+<% @page_title = "All Sections" %>
+
+<div class="pages index">
+  <h2>Pages Index</h2>
+  <%= link_to  "Add New page", new_page_path, :class => 'action new' %>
+
+  <table class="listing", summary="page list">
+    <tr class="header">
+      <th>#</th>
+      <th>Page</th>
+      <th>Subject ID</th>
+      <th>Permalink</th>
+      <th>Visible</th>
+      <th>Sections</th>
+      <th>Actions</th>
+    </tr>
+    <% @pages.each do |page| %>
+    <tr>
+      <td><%= page.position %></td>
+      <td><%= page.name %></td>
+      <td><%= page.subject_id%></td>
+      <td><%= page.permalink %></td>
+      <td class="center"><%= page.visible ? "Yes" : "No"%></td>
+      <td class="center"><%= page.sections.size %></td>
+      <td class="actions">
+        <%= link_to "show", page_path(page), :class => 'action show' %>
+        <%= link_to  "edit", edit_page_path(page), :class => 'action edit' %>
+        <%= link_to  "delete", delete_page_path(page), :class => 'action delete' %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>
