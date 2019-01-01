@@ -6,4 +6,12 @@ class Page < ApplicationRecord
   scope :visible, lambda {where(visible: true)}
   scope :newest_first, -> {order(position: :asc)}
 
+  validates :name, 
+            presence: true,
+            length: {maximum: 255}
+  
+  validates_presence_of :permalink
+  validates_length_of :permalink, within: 3..255
+  validates_uniqueness_of :permalink
+
 end

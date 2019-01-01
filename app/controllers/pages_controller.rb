@@ -1,6 +1,9 @@
 class PagesController < ApplicationController
 
   layout 'admin'
+  before_action :find_subjects, only: %i[new create edit update]
+  before_action :set_page_count, :only => [:new, :create, :edit, :update]
+  
 
   def index
     @pages = Page.newest_first
@@ -12,8 +15,6 @@ class PagesController < ApplicationController
 
   def new
     @page = Page.new :name => 'Default Page'
-    @page_count = Page.count + 1
-    @subjects = Subject.sorted_by_position
   end
 
   def create
@@ -23,16 +24,12 @@ class PagesController < ApplicationController
       redirect_to pages_path
     else
       # flash[:error] = "Error has been occured."
-      @page_count = Page.count + 1
-      @subjects = Subject.sorted_by_position
       render 'new'
     end
   end
 
   def edit
     @page = Page.find params[:id]
-    @page_count = Page.count
-    @subjects = Subject.sorted_by_position
   end
 
   def update
@@ -43,8 +40,6 @@ class PagesController < ApplicationController
       redirect_to page_path @page
     else
       # flash[:error] = "There has been some error while creation."
-      @page_count = Page.count + 1
-      @subjects = Subject.sorted_by_position
       render 'edit'
     end
   end
@@ -61,7 +56,21 @@ class PagesController < ApplicationController
   end
 
   private
+
   def page_params
     params.require(:page).permit(:subject_id, :name, :permalink, :position, :visible)
   end
+
+  def find_subjects
+    @subjects = Subject.sorted_by_position
+  end
+
+  def set_page_count
+    @page_count = Page.count
+    if params[:action] == 'new' || params[:action] == 'create'
+      @page_count += 1
+    end
+  end
+
+
 end
