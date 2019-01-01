@@ -12,6 +12,8 @@ class PagesController < ApplicationController
 
   def new
     @page = Page.new :name => 'Default Page'
+    @page_count = Page.count + 1
+    @subjects = Subject.sorted_by_position
   end
 
   def create
@@ -21,12 +23,16 @@ class PagesController < ApplicationController
       redirect_to pages_path
     else
       # flash[:error] = "Error has been occured."
+      @page_count = Page.count + 1
+      @subjects = Subject.sorted_by_position
       render 'new'
     end
   end
 
   def edit
     @page = Page.find params[:id]
+    @page_count = Page.count
+    @subjects = Subject.sorted_by_position
   end
 
   def update
@@ -37,6 +43,8 @@ class PagesController < ApplicationController
       redirect_to page_path @page
     else
       # flash[:error] = "There has been some error while creation."
+      @page_count = Page.count + 1
+      @subjects = Subject.sorted_by_position
       render 'edit'
     end
   end
