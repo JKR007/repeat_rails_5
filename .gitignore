@@ -19,13 +19,13 @@
 .byebug_history
 
 #my ignores
-.gitignore
-.ruby-version
-public/update/
-config/database.yml
-config/application.yml
-database.yml
-application.yml
-.ruby-gemset
-.DS_Store
-.vscode
+/.gitignore
+/.ruby-version
+/public/update/
+/config/database.yml
+/config/application.yml
+/database.yml
+/application.yml
+/.ruby-gemset
+/.DS_Store
+/.vscode
