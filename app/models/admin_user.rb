@@ -4,6 +4,8 @@ class AdminUser < ApplicationRecord
   # self.table_name = "admin_users"
   # or change the 'class' name and 'file' name
 
+  has_secure_password
+
   # to use 'has_and_belongs_to_many, we create migration 'create_admin_user_pages_join'
   has_and_belongs_to_many :pages
 
