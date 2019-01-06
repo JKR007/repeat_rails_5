@@ -41,6 +41,7 @@ class AdminUser < ApplicationRecord
   validate :username_is_allowed
   validate :no_new_users_on_tuesday
 
+  scope :sorted, -> { where(:full_name) }
 
   private
 
@@ -54,5 +55,9 @@ class AdminUser < ApplicationRecord
     if Time.now.wday == 2
       errors.add :base, 'No new users on Tuesday.'
     end
+  end
+
+  def full_name
+    self.frist_name + " " + self.last_name
   end
 end
