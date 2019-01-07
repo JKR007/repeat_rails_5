@@ -26,11 +26,18 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :admin_users, except: [:show] do
+    member do
+      get :delete
+    end
+  end
+
   get 'demo/index'
   get 'demo/hello'
   get 'demo/other_hello'
   get 'demo/linkedIn'
-  get "demo/escape_output"
+  get 'demo/escape_output'
+
   # log way of writing of the get route
   # match "demo/index", :to =>  "demo#index", :via => :get
 

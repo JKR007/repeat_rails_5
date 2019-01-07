@@ -1,0 +1,32 @@
+<% @page_title = "Admin Users" %>
+<div class="admin_users index">
+  <h2>Admin Users</h2>
+
+  <%= link_to "<< Back to Menu", access_menu_path, class: 'action_new'%>
+  <br>
+  <%= image_tag 'plus_sign.png', :size => '11x11', :alt => '+' %>
+  <%= link_to  "Add New Admin", new_admin_user_path, :class => 'action new' %>
+
+  <table class="listing", summary="subject list">
+    <tr class="header">
+      <th>ID</th>
+      <th>Admin User</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+    <% @admin_users.each do |admin_user| %>
+    <tr>
+      <td class="center"><%= admin_user.id %></td>
+      <td><%= admin_user.full_name %></td>
+      <td><%= admin_user.username %></td>
+      <td><%= mail_to(admin_user.email) %></td>
+      <td class="actions">
+        <%= link_to "show", admin_user_path(admin_user), :class => 'action show' %>
+        <%= link_to  "edit", edit_admin_user_path(admin_user), :class => 'action edit' %>
+        <%= link_to  "delete", delete_admin_user_path(admin_user), :class => 'action delete' %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+</div>

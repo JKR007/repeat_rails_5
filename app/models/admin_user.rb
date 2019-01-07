@@ -41,7 +41,11 @@ class AdminUser < ApplicationRecord
   validate :username_is_allowed
   validate :no_new_users_on_tuesday
 
-  scope :sorted, -> { where(:full_name) }
+  scope :sorted, -> { order(:frist_name, :last_name) }
+
+  def full_name
+    self.frist_name + " " + self.last_name
+  end
 
   private
 
@@ -57,7 +61,4 @@ class AdminUser < ApplicationRecord
     end
   end
 
-  def full_name
-    self.frist_name + " " + self.last_name
-  end
 end

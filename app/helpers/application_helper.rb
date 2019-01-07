@@ -9,9 +9,11 @@ module ApplicationHelper
     options[:false_text] ||= ''
 
     if boolean
+      # content_tag is helper method, which creates a tag - in this example it
+      # creates a <span> tag with 'class'
       content_tag :span, options[:true_text], :class => 'status true'
     else
-      content_tag :span, options[:ture_text], :class => 'status false'
+      content_tag :span, options[:false_text], :class => 'status false'
     end
     
   end
