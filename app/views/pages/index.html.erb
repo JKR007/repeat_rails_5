@@ -1,9 +1,11 @@
-<% @page_title = "All Sections" %>
+<% @page_title = "All Pages" %>
+
+<%= link_to  "<< Back To Subjects", subjects_path, :class => 'back-link' %>
 
 <div class="pages index">
   <h2>Pages Index</h2>
   <%= image_tag 'plus_sign.png', :size => '11x11', :alt => '+' %>
-  <%= link_to  "Add New page", new_page_path, :class => 'action new' %>
+  <%= link_to  "Add New page", new_page_path(:subject_id => @subject.id), :class => 'action new' %>
 
   <table class="listing", summary="page list">
     <tr class="header">
@@ -21,12 +23,13 @@
       <td><%= page.name %></td>
       <td><%= page.subject_id%></td>
       <td><%= page.permalink %></td>
-      <td class="center"><%= page.visible ? "Yes" : "No"%></td>
+      <td class="center"><%= status_tag page.visible %></td>
       <td class="center"><%= page.sections.size %></td>
       <td class="actions">
-        <%= link_to "show", page_path(page), :class => 'action show' %>
-        <%= link_to  "edit", edit_page_path(page), :class => 'action edit' %>
-        <%= link_to  "delete", delete_page_path(page), :class => 'action delete' %>
+        <%= link_to  "view sections", sections_path(:page_id => page.id), :class => 'action show' %>
+        <%= link_to "show", page_path(page, :subject_id => @subject.id), :class => 'action show' %>
+        <%= link_to  "edit", edit_page_path(page, :subject_id => @subject.id), :class => 'action edit' %>
+        <%= link_to  "delete", delete_page_path(page, :subject_id => @subject.id), :class => 'action delete' %>
       </td>
     </tr>
     <% end %>

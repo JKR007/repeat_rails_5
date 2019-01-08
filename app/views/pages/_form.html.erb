@@ -8,8 +8,8 @@
   </tr>
   <tr>
     <th>Subject</th>
-    <td><%= f.select :subject_id, @subjects.map{|s| [s.name, s.id]} %></td>
-  </tr>
+    <%= f.object.subject.name %>
+  </tr> 
   <tr>
     <th>Permalink</th>
     <td><%= f.text_field :permalink %></td>

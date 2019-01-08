@@ -8,7 +8,7 @@
   </tr>
   <tr>
     <th>Page</th>
-    <td><%= f.select :page_id, @pages.map{|p| [p.name, p.id]} %></td>
+    <%= f.object.page.name %>
   </tr>
   <tr>
     <th>Position</th>
@@ -21,7 +21,7 @@
   <tr>
     <th>Content Type</th>
     <td>
-      <%= f.radio_button :content_type, :value => "text" %> Text
+      <%= f.radio_button :content_type, "text" %> Text
       <%= f.radio_button :content_type, "HTML" %> HTML
     </td>
   </tr>

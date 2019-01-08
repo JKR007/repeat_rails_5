@@ -20,6 +20,7 @@
       <td class="center"><%= status_tag subject.visible %></td>
       <td class="center"><%= subject.pages.size %></td>
       <td class="actions">
+        <%= link_to "view pages", pages_path(:subject_id => subject.id), :class => 'action show' %>
         <%= link_to "show", subject_path(subject), :class => 'action show' %>
         <%= link_to  "edit", edit_subject_path(subject), :class => 'action edit' %>
         <%= link_to  "delete", delete_subject_path(subject), :class => 'action delete' %>
